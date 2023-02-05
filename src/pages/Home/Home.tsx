@@ -1,5 +1,6 @@
 import React from 'react';
-import ShowButton from "../../components/Buttons/LinkButtons/ShowButton";
+import { ShowButton } from '../../components';
+
 
 const Home = (): JSX.Element => {
     return (
@@ -11,8 +12,8 @@ const Home = (): JSX.Element => {
                     <div className="card card-side bg-base-300 shadow-xl w-3/4 my-1">
                         <figure className="w-16"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Black/Ethereum_black.png?raw=true" alt="Movie"/></figure>
                         <div className="card-body">
-                            <h2 className="card-title">New movie is released!</h2>
-                            <p>Click the button to watch on Netflix app.</p>
+                            <h2 className="card-title">Search Medicines</h2>
+                            <p>Click the button to check feature.</p>
                             <div className="card-actions justify-end">
                                 <ShowButton to="/home" />
                             </div>
@@ -24,7 +25,7 @@ const Home = (): JSX.Element => {
                     <div className="card card-side bg-base-300 shadow-xl w-3/4 my-1">
                         <figure className="w-16"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Black/Ethereum_black.png?raw=true" alt="Movie"/></figure>
                         <div className="card-body">
-                            <h2 className="card-title">New feature is released!</h2>
+                            <h2 className="card-title">On-Duty Pharmacies.</h2>
                             <p>Click the button to check on-duty pharmacies.</p>
                             <div className="card-actions justify-end">
                                 <ShowButton to="/duty-pharmacy" />
@@ -37,10 +38,10 @@ const Home = (): JSX.Element => {
                     <div className="card card-side bg-base-300 shadow-xl w-3/4 my-1">
                         <figure className="w-16"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Black/Ethereum_black.png?raw=true" alt="Movie"/></figure>
                         <div className="card-body">
-                            <h2 className="card-title">New movie is released!</h2>
-                            <p>Click the button to watch on Netflix app.</p>
+                            <h2 className="card-title">Check Medicine Content</h2>
+                            <p>Click the button to check feature.</p>
                             <div className="card-actions justify-end">
-                                <ShowButton to="/home" />
+                                <ShowButton to="/medicine-content" />
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,8 @@ import Home from "./pages/Home/Home";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DutyPharmacy from "./pages/DutyPharmacy/DutyPharmacy";
 import useStyles from "./App.styles";
+import MedicineContent from "./pages/MedicineContent/MedicineContent";
+import {Footer, Navbar} from "./components";
 
 
 function App(): JSX.Element {
@@ -11,12 +13,7 @@ function App(): JSX.Element {
     return (
 
         <>
-
-            <div>
-                <div className="navbar bg-base-100 flex justify-center">
-                    <a className="btn btn-ghost normal-case text-xl" href="/">PharmaZone</a>
-                </div>
-            </div>
+            <Navbar />
 
             <div>
                 <BrowserRouter>
@@ -24,16 +21,24 @@ function App(): JSX.Element {
 
                         <Route
                             path="/"
-                            element={<Home/>}/>
+                            element={<Home/>}
+                        />
 
                         <Route
                             path="/duty-pharmacy"
-                            element={<DutyPharmacy/>}/>
+                            element={<DutyPharmacy/>}
+                        />
+
+                        <Route
+                            path="/medicine-content"
+                            element={<MedicineContent/>}
+                        />
 
                     </Routes>
                 </BrowserRouter>
             </div>
 
+            <Footer />
         </>
     );
 }
