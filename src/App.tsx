@@ -12,7 +12,7 @@ function App(): JSX.Element {
 
     return (
 
-        <>
+        <section>
             <Navbar />
 
             <div>
@@ -39,7 +39,7 @@ function App(): JSX.Element {
             </div>
 
             <Footer />
-        </>
+        </section>
     );
 }
 

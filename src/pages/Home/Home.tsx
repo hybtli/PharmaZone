@@ -7,7 +7,7 @@ const Home = (): JSX.Element => {
 
         <>
 
-            <section className="bg-secondary">
+            <section className="bg-warning">
                 <div className="flex justify-center">
                     <div className="card card-side bg-base-300 shadow-xl w-3/4 my-1">
                         <figure className="w-16"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Black/Ethereum_black.png?raw=true" alt="Movie"/></figure>
