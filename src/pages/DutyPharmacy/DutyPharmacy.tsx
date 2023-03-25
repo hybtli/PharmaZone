@@ -1,52 +1,55 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { toast } from "react-toastify";
-import {Button} from "@material-ui/core";
-import {GetDutyPharmacyDetail} from "../../assets";
+import {GetDutyPharmacyDetail} from "../../api/DutyPharmacyController.types";
 import {BasicTable} from "../../components";
-
-type Location = {
-    lat: number;
-    lng: number;
-}
+import API from "../../api";
 
 const DutyPharmacy = (): JSX.Element => {
     const [pharmacy, setPharmacy] = useState<GetDutyPharmacyDetail[]>([]);
-    const [city, setCity] = useState("izmir");
-    const [district, setDistrict] = useState("konak");
+    // storing selected province
+    const [city, setCity] = useState("");
+    // store selected district
+    const [county, setCounty] = useState("");
+    // String array for storing all provinces
+    const [provinces, setProvinces] = useState<{
+        SehirAd: string,
+        SehirSlug: string
+    }[]>([]);
+    // String array for storing all districts according to selected province
+    const [districts, setDistricts] = useState<{
+        ilceAd: string,
+        ilceSlug: string
+    }[]>([]);
+
     const [selected, setSelected] = useState(false);
+    const [table, setTable] = useState(false);
 
-    const provinces: string[] = []
 
-    const options = {
-        method: 'GET',
-        url: 'https://www.nosyapi.com/apiv2/pharmacy',
-        params: { city: city, county: district },
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer R1gfU0BygA7H4cMKTCOs5EfNS0HmKOIt1ORfkAHZIkmeGDVUUSME7f0tMh66'
-        }
-    };
-    /*
     useEffect(() => {
         (async () => {
-            await axios.request(options).then((response: any) => {
-                setPharmacy(response.data.data);
-            }).catch((error: any) => {
-                console.log(error);
+            await API.getPharmacies(city, county).then((response) => {
+                setPharmacy(response)
+            })
+        })()
+    }, [county]);
+
+
+    // Getting the provinces of Turkey
+    useEffect(() => {
+        (async () => {
+             await API.getProvinces().
+             then((response) => {
+                setProvinces(response);
             });
         })();
     }, []);
-    */
 
-    // console.log("Pharmacies:\n", pharmacy);
-
-    axios.get("https://turkiyeapi.cyclic.app/api/v1/provinces").then((response) => {
-        response.data.data.map((province: { name: string; }) => provinces.push(province.name))
-    });
-
-    console.log(provinces);
-
+    // Getting the districts according to selected province
+    const handleDistricts = async (province: string) => {
+        await API.getDistricts(province).then((response) => {
+            setDistricts(response);
+        });
+    };
 
     return (
         <section className="bg-warning">
@@ -57,42 +60,49 @@ const DutyPharmacy = (): JSX.Element => {
                     disabled={false}
                     onChange={(event) => {
                         setCity(event.target.value);
-                        setSelected(true);
+                        setSelected(true)
+                    }}
+                    onClick={() => {
+                        console.log(city);
+                        return handleDistricts(city);
                     }}
                 >
                     <option disabled selected>Pick your province</option>
-                    {provinces.map((item) => (
+                    {provinces.map((item, index) => (
                         <option
-                            key={provinces.indexOf(item)}
-                            value={item}
-                            >
-                            {item}
+                            key={index}
+                            value={item.SehirSlug}
+                        >
+                            {item.SehirAd}
                         </option>
                     ))}
+
                 </select>
 
                 <select
                     className="select select-primary w-full max-w-xs mt-3"
                     disabled={!selected}
                     onChange={(event) => {
-                        setCity(event.target.value);
+                        setCounty(event.target.value)
+                        setTable(true);
                     }}
                 >
                     <option disabled selected>Pick your district</option>
-                    {provinces.map((item, index) => (
+                    {districts.map((item, index) => (
                         <option
                             key={index}
-                            value={item}
+                            value={item.ilceSlug}
                         >
-                            {item}
+                            {item.ilceAd}
                         </option>
                     ))}
                 </select>
+
             </div>
 
-            <div>
+            {table && (
                 <BasicTable headers={["Name","Address","Telephone","Map"]} data={pharmacy}/>
-            </div>
+            )}
 
         </section>
     );
