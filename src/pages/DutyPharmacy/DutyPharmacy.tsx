@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {GetDutyPharmacyDetail} from "../../api/DutyPharmacyController.types";
-import {BasicTable} from "../../components";
 import API from "../../api";
+import { BasicTable } from './component/Table';
 
 const DutyPharmacy = (): JSX.Element => {
     const [pharmacy, setPharmacy] = useState<GetDutyPharmacyDetail[]>([]);
@@ -22,8 +22,8 @@ const DutyPharmacy = (): JSX.Element => {
     }[]>([]);
 
     const [selected, setSelected] = useState(false);
-    const [table, setTable] = useState(false);
-
+    const [loading, setLoading] = useState(false);
+    const [showTable, setShowTable] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -84,7 +84,6 @@ const DutyPharmacy = (): JSX.Element => {
                     disabled={!selected}
                     onChange={(event) => {
                         setCounty(event.target.value)
-                        setTable(true);
                     }}
                 >
                     <option disabled selected>Pick your district</option>
@@ -100,9 +99,7 @@ const DutyPharmacy = (): JSX.Element => {
 
             </div>
 
-            {table && (
-                <BasicTable headers={["Name","Address","Telephone","Map"]} data={pharmacy}/>
-            )}
+            <BasicTable headers={["Name","Address","Telephone","Map"]} data={pharmacy}/>
 
         </section>
     );

@@ -1,15 +1,14 @@
 import React from 'react';
-import { ShowButton } from '../../components';
+import { ShowButton} from '../../components';
 
 
 const Home = (): JSX.Element => {
     return (
 
-        <>
 
             <section className="bg-warning">
-                <div className="flex justify-center">
-                    <div className="card card-side bg-base-300 shadow-xl w-3/4 my-1">
+                <div className="flex justify-center flex-wrap">
+                    <div className="card card-side bg-base-300 shadow-xl w-full sm:w-3/4 my-1 sm:mx-1">
                         <figure className="w-16"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Black/Ethereum_black.png?raw=true" alt="Movie"/></figure>
                         <div className="card-body">
                             <h2 className="card-title">Search Medicines</h2>
@@ -19,10 +18,8 @@ const Home = (): JSX.Element => {
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="flex justify-center">
-                    <div className="card card-side bg-base-300 shadow-xl w-3/4 my-1">
+                    <div className="card card-side bg-base-300 shadow-xl w-full sm:w-3/4 my-1 sm:mx-1">
                         <figure className="w-16"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Black/Ethereum_black.png?raw=true" alt="Movie"/></figure>
                         <div className="card-body">
                             <h2 className="card-title">On-Duty Pharmacies.</h2>
@@ -32,10 +29,8 @@ const Home = (): JSX.Element => {
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="flex justify-center">
-                    <div className="card card-side bg-base-300 shadow-xl w-3/4 my-1">
+                    <div className="card card-side bg-base-300 shadow-xl w-full sm:w-3/4 my-1 sm:mx-1">
                         <figure className="w-16"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Black/Ethereum_black.png?raw=true" alt="Movie"/></figure>
                         <div className="card-body">
                             <h2 className="card-title">Check Medicine Content</h2>
@@ -45,10 +40,10 @@ const Home = (): JSX.Element => {
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </section>
-        </>
 
     );
 };

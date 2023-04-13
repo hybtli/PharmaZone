@@ -4,7 +4,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DutyPharmacy from "./pages/DutyPharmacy/DutyPharmacy";
 import useStyles from "./App.styles";
 import MedicineContent from "./pages/MedicineContent/MedicineContent";
-import {Footer, Navbar} from "./components";
+import { Footer, Navbar} from "./components";
 
 
 function App(): JSX.Element {
@@ -12,7 +12,7 @@ function App(): JSX.Element {
 
     return (
 
-        <section>
+        <section className={classes.root}>
             <Navbar />
 
             <div>
@@ -20,7 +20,7 @@ function App(): JSX.Element {
                     <Routes>
 
                         <Route
-                            path="/"
+                            path="/home"
                             element={<Home/>}
                         />
 
