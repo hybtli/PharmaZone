@@ -32,7 +32,7 @@ const MedicineContent = (): JSX.Element => {
                 searchedMedicine.map((item) => (
                     <Collapse content={item}/>
                 ))
-            ) : <img className="mx-auto my-auto" src={image} alt="Search Medicine"/>}
+            ) : <img className="mx-auto" src={image} alt="Search Medicine"/>}
 
         </React.Fragment>
     );

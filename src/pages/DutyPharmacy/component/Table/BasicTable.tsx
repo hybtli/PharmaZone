@@ -24,7 +24,7 @@ const BasicTable = ({headers, data}: TableProps) => {
 
     return (
         <div className="overflow-x-auto">
-            <table className="table mx-auto my-5">
+            <table className="table mx-auto my-10">
                 <thead>
                 <tr>
                     {headers.map((header, index) => (

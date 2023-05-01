@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {GetDutyPharmacyDetail} from "../../api/DutyPharmacyController.types";
 import API from "../../api";
 import { BasicTable } from './component/Table';
-import Loading from "../../components/Loading";
+import { Loading } from '../../components';
+import image from "../../images/image2.png";
 
 const DutyPharmacy = (): JSX.Element => {
     const [pharmacy, setPharmacy] = useState<GetDutyPharmacyDetail[]>([]);
@@ -23,6 +24,8 @@ const DutyPharmacy = (): JSX.Element => {
 
     const [selected, setSelected] = useState(false);
     const [loading, setLoading] = useState(false);
+    // When province&district is not selected then do not show the table
+    const [state, setState] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -34,6 +37,7 @@ const DutyPharmacy = (): JSX.Element => {
         })()
     }, [county]);
 
+    console.log(pharmacy);
 
     // Getting the provinces of Turkey
     useEffect(() => {
@@ -64,7 +68,6 @@ const DutyPharmacy = (): JSX.Element => {
                         setSelected(true)
                     }}
                     onClick={() => {
-                        console.log(city);
                         return handleDistricts(city);
                     }}
                 >
@@ -85,6 +88,7 @@ const DutyPharmacy = (): JSX.Element => {
                     disabled={!selected}
                     onChange={(event) => {
                         setCounty(event.target.value)
+                        setState(true)
                     }}
                 >
                     <option disabled selected>Pick your district</option>
@@ -100,9 +104,11 @@ const DutyPharmacy = (): JSX.Element => {
 
             </div>
 
-            {loading ? <Loading fullscreen /> : (
-                <BasicTable headers={["Name","Address","Telephone","Map"]} data={pharmacy}/>
-            )}
+            {state ? (
+                loading ? <Loading fullscreen /> : (
+                        <BasicTable headers={["Name","Address","Telephone","Map"]} data={pharmacy}/>
+                    )
+            ) : (<img className="mx-auto my-auto" src={image} alt="Search Pharmacy" />)}
 
         </section>
     );

@@ -38,7 +38,7 @@ function App(): JSX.Element {
                 </BrowserRouter>
             </div>
 
-            <Footer />
+            { /*<Footer />*/}
         </section>
     );
 }
