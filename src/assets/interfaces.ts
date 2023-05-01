@@ -7,6 +7,6 @@ export interface GetMedicineContent {
         ingredients: string[];
         indications: string;
         warnings: string[];
-        storage: string[];
+        storage: string;
     }
 }

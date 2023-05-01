@@ -1,6 +1,6 @@
 import { Typography } from '@material-ui/core';
 import React, { useState } from 'react';
-import {GetMedicineContent} from "../assets";
+import {GetMedicineContent} from "../../../assets";
 
 type ContentType = {
     content: GetMedicineContent;
@@ -19,6 +19,10 @@ const Collapse = (props: ContentType): JSX.Element => {
                 <button
                     className="flex justify-between w-full p-4 font-medium text-left text-base-500 bg-base-100
                     rounded-t-lg hover:bg-base-200 focus:ring-offset-base-100 focus:ring-indigo-500"
+                    style={{
+                        borderBottomLeftRadius: !isExpanded ? '10px' : '0px',
+                        borderBottomRightRadius: !isExpanded ? '10px' : '0px',
+                    }}
                     onClick={toggleAccordion}
                 >
                     <span>{props.content.medicine.name}</span>
@@ -42,9 +46,21 @@ const Collapse = (props: ContentType): JSX.Element => {
                             Dosage Form: {props.content.medicine.dosage_form} <br/>
                             Strength: {props.content.medicine.strength} <br/>
                             Manufacturer: {props.content.medicine.manufacturer} <br/>
-                            Ingredients: {props.content.medicine.ingredients} <br/>
-                            Indications: {props.content.medicine.indications} <br/>
-                            Warnings: {props.content.medicine.warnings} <br/>
+                            Ingredients:
+                            {
+                                props.content.medicine.ingredients.map((item) => (
+                                    <Typography>{`${item}\n`}</Typography>
+                                ))
+                            }
+                            <br/>
+                            Indications:{props.content.medicine.indications} <br/>
+                            Warnings:
+                            {
+                                props.content.medicine.warnings.map((item) => (
+                                    <Typography>{`${item}\n`}</Typography>
+                                ))
+                            }
+                            <br/>
                             Storage: {props.content.medicine.storage} <br/>
                         </Typography>
                     </div>

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
 import {GetDutyPharmacyDetail} from "../../api/DutyPharmacyController.types";
 import API from "../../api";
 import { BasicTable } from './component/Table';
+import Loading from "../../components/Loading";
 
 const DutyPharmacy = (): JSX.Element => {
     const [pharmacy, setPharmacy] = useState<GetDutyPharmacyDetail[]>([]);
@@ -23,13 +23,14 @@ const DutyPharmacy = (): JSX.Element => {
 
     const [selected, setSelected] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [showTable, setShowTable] = useState(false);
 
     useEffect(() => {
         (async () => {
+            setLoading(true);
             await API.getPharmacies(city, county).then((response) => {
                 setPharmacy(response)
             })
+            setLoading(false);
         })()
     }, [county]);
 
@@ -99,7 +100,9 @@ const DutyPharmacy = (): JSX.Element => {
 
             </div>
 
-            <BasicTable headers={["Name","Address","Telephone","Map"]} data={pharmacy}/>
+            {loading ? <Loading fullscreen /> : (
+                <BasicTable headers={["Name","Address","Telephone","Map"]} data={pharmacy}/>
+            )}
 
         </section>
     );
