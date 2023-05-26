@@ -1,5 +1,5 @@
 import React from "react";
-import { ShowButton } from "../../components";
+import { FlipCard, ShowButton } from "../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCapsules, faHouseMedical } from "@fortawesome/free-solid-svg-icons";
 

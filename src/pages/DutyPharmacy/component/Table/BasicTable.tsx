@@ -32,9 +32,9 @@ const BasicTable = ({ headers, data }: TableProps) => {
         <tbody>
           {data.map((item, index) => (
             <tr key={index}>
-              <td>{item.EczaneAdi}</td>
-              <td>{item.Adresi}</td>
-              <td>{item.Telefon}</td>
+              <td className="whitespace-nowrap">{item.EczaneAdi}</td>
+              <td className="whitespace-nowrap">{item.Adresi}</td>
+              <td className="whitespace-nowrap">{item.Telefon}</td>
               <td>
                 <button
                   className="btn btn-ghost btn-xs"

@@ -60,10 +60,10 @@ const DutyPharmacy = (): JSX.Element => {
   };
 
   return (
-    <section>
-      <div className="flex items-center justify-evenly">
+    <section className="flex flex-col items-center justify-center">
+      <div className="w-full max-w-xs md:max-w-sm">
         <select
-          className="select select-secondary w-full max-w-xs mt-3"
+          className="select select-secondary w-full mt-3"
           disabled={false}
           onChange={(event) => {
             setCity(event.target.value);
@@ -82,9 +82,11 @@ const DutyPharmacy = (): JSX.Element => {
             </option>
           ))}
         </select>
+      </div>
 
+      <div className="w-full max-w-xs md:max-w-sm mt-3">
         <select
-          className="select select-primary w-full max-w-xs mt-3"
+          className="select select-primary w-full"
           disabled={!selected}
           onChange={(event) => {
             setCounty(event.target.value);

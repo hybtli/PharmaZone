@@ -1,46 +1,33 @@
 import React from "react";
 import Home from "./pages/Home/Home";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DutyPharmacy from "./pages/DutyPharmacy/DutyPharmacy";
 import useStyles from "./App.styles";
 import MedicineContent from "./pages/MedicineContent/MedicineContent";
-import { Footer, Navbar} from "./components";
-
+import { FlipCard, Footer, Navbar } from "./components";
 
 function App(): JSX.Element {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
+  return (
+    <section className={classes.root}>
+      <Navbar />
 
-        <section className={classes.root}>
-            <Navbar />
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/home" element={<Home />} />
 
-            <div>
-                <BrowserRouter>
-                    <Routes>
+            <Route path="/duty-pharmacy" element={<DutyPharmacy />} />
 
-                        <Route
-                            path="/home"
-                            element={<Home/>}
-                        />
+            <Route path="/medicine-content" element={<MedicineContent />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
 
-                        <Route
-                            path="/duty-pharmacy"
-                            element={<DutyPharmacy/>}
-                        />
-
-                        <Route
-                            path="/medicine-content"
-                            element={<MedicineContent/>}
-                        />
-
-                    </Routes>
-                </BrowserRouter>
-            </div>
-
-            { /*<Footer />*/}
-        </section>
-    );
+      {/*<Footer />*/}
+    </section>
+  );
 }
 
 export default App;
