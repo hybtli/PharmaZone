@@ -1,35 +1,50 @@
 import React from "react";
-import { FlipCard, ShowButton } from "../../components";
+import { ShowButton } from "../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCapsules, faHouseMedical } from "@fortawesome/free-solid-svg-icons";
+import styles from "./FlipCard.module.css";
+import { Typography } from "@material-ui/core";
 
 const Home = (): JSX.Element => {
   return (
-    <section>
-      <div className="flex justify-center flex-wrap">
-        <div className="card card-side bg-base-300 shadow-xl w-full sm:w-3/4 my-1 sm:mx-1">
-          <figure className="w-16">
-            <FontAwesomeIcon icon={faHouseMedical} beatFade size="xl" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">On-Duty Pharmacies.</h2>
-            <p>Click the button to check on-duty pharmacies.</p>
-            <div className="card-actions justify-end">
-              <ShowButton to="/duty-pharmacy" />
-            </div>
+    <section className={styles.componentContainer}>
+      <div className={styles.container}>
+        <div className={styles.card} style={{ marginLeft: "5%" }}>
+          <div className={styles.front}>
+            <FontAwesomeIcon icon={faHouseMedical} beatFade size="2xl" />
+            <Typography>On-Duty Pharmacies</Typography>
+          </div>
+          <div className={styles.back}>
+            <Typography style={{ marginLeft: "5%", marginRight: "5%" }}>
+              The "On-Duty Pharmacies" section provides you with information
+              about pharmacies that are open 24/7 and ready to meet your needs.
+              Click on the button to find pharmacies on call in your area, so
+              you can conveniently access the healthcare services you need when
+              you need them.
+            </Typography>
+            <ShowButton to="/duty-pharmacy" />
           </div>
         </div>
+      </div>
 
-        <div className="card card-side bg-base-300 shadow-xl w-full sm:w-3/4 my-1 sm:mx-1">
-          <figure className="w-16">
+      <div className={styles.container}>
+        <div className={styles.card} style={{ marginRight: "5%" }}>
+          <div className={styles.front}>
             <FontAwesomeIcon icon={faCapsules} beatFade size="lg" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">Check Medicine Content</h2>
-            <p>Click the button to check feature.</p>
-            <div className="card-actions justify-end">
-              <ShowButton to="/medicine-content" />
-            </div>
+            <Typography>Check Medicine Content</Typography>
+          </div>
+          <div className={styles.back}>
+            <Typography style={{ marginLeft: "5%", marginRight: "5%" }}>
+              The "Check Medicine Content" section allows you to easily access
+              and verify information about different medicine contents. With a
+              simple click, you can explore and gain insights into the
+              composition and details of various medicines. This feature enables
+              you to make informed decisions about your healthcare by providing
+              easy access to comprehensive information about medicine contents
+              and their potential effects. Click on the button to check content
+              of medicines.
+            </Typography>
+            <ShowButton to="/medicine-content" />
           </div>
         </div>
       </div>

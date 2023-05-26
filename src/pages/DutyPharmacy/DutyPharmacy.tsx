@@ -39,7 +39,7 @@ const DutyPharmacy = (): JSX.Element => {
       });
       setLoading(false);
     })();
-  }, [county]);
+  }, [city, county]);
 
   console.log(pharmacy);
 

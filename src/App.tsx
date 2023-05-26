@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DutyPharmacy from "./pages/DutyPharmacy/DutyPharmacy";
 import useStyles from "./App.styles";
 import MedicineContent from "./pages/MedicineContent/MedicineContent";
-import { FlipCard, Footer, Navbar } from "./components";
+import { Footer, Navbar } from "./components";
 
 function App(): JSX.Element {
   const classes = useStyles();
