@@ -7,7 +7,7 @@
  */
 
 import React from "react";
-import { GetDutyPharmacyDetail } from "../../../../api/DutyPharmacyController.types";
+import { GetDutyPharmacyDetail } from "../../api/DutyPharmacyController.types";
 
 type TableProps = {
   headers: string[];

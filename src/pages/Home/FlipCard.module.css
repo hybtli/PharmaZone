@@ -1,13 +1,14 @@
 .componentContainer {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 20px;
+    height: 90vh;
 }
 
 .container {
     width: 350px;
     height: 500px;
-    perspective: 800px;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -24,7 +25,6 @@
     position: relative;
     transition: transform 1500ms;
     transform-style: preserve-3d;
-    margin-top: 10%;
 }
 
 .front,
@@ -54,4 +54,17 @@
     justify-content: center;
     align-items: center;
     gap: 5rem;
+}
+
+@media (max-width: 768px) {
+    /* Adjust styles for screens up to 768px width */
+    .componentContainer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .container {
+        width: auto;
+        height: auto;
+    }
 }

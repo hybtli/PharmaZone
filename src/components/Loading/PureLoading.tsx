@@ -13,9 +13,11 @@ const useStyles = makeStyles({
   icon: {
     width: "9em",
     height: "9em",
+    color: "red",
   },
   message: {
     textAlign: "center",
+    color: "black",
     fontFamily: "Roboto, sans-serif",
     opacity: 0.5,
     margin: "0 1em",
@@ -39,7 +41,7 @@ const PureLoading: React.FC<LoadingProps> = ({
   return (
     <div className={clsx(classes.container, fullscreen && classes.fullscreen)}>
       <div className={classes.message}>
-        <CircularProgress className={classes.icon} color="primary" />
+        <CircularProgress className={classes.icon} />
         {children}
       </div>
     </div>

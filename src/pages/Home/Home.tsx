@@ -1,5 +1,5 @@
 import React from "react";
-import { ShowButton } from "../../components";
+import { Footer, ShowButton } from "../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCapsules, faHouseMedical } from "@fortawesome/free-solid-svg-icons";
 import styles from "./FlipCard.module.css";
@@ -11,8 +11,8 @@ const Home = (): JSX.Element => {
       <div className={styles.container}>
         <div className={styles.card} style={{ marginLeft: "5%" }}>
           <div className={styles.front}>
-            <FontAwesomeIcon icon={faHouseMedical} beatFade size="2xl" />
-            <Typography>On-Duty Pharmacies</Typography>
+            <FontAwesomeIcon icon={faHouseMedical} beatFade size="4x" />
+            <Typography variant="h5">On-Duty Pharmacies</Typography>
           </div>
           <div className={styles.back}>
             <Typography style={{ marginLeft: "5%", marginRight: "5%" }}>
@@ -30,8 +30,8 @@ const Home = (): JSX.Element => {
       <div className={styles.container}>
         <div className={styles.card} style={{ marginRight: "5%" }}>
           <div className={styles.front}>
-            <FontAwesomeIcon icon={faCapsules} beatFade size="lg" />
-            <Typography>Check Medicine Content</Typography>
+            <FontAwesomeIcon icon={faCapsules} beatFade size="4x" />
+            <Typography variant="h5">Check Medicine Content</Typography>
           </div>
           <div className={styles.back}>
             <Typography style={{ marginLeft: "5%", marginRight: "5%" }}>
@@ -48,6 +48,7 @@ const Home = (): JSX.Element => {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
