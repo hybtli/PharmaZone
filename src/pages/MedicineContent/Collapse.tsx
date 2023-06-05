@@ -1,6 +1,6 @@
 import { Typography } from "@material-ui/core";
 import React, { useState } from "react";
-import { GetMedicineContent } from "../../assets";
+import { GetMedicineContent } from "../../api/MedicineContentController.types";
 
 type ContentType = {
   content: GetMedicineContent;

@@ -24,8 +24,6 @@ function App(): JSX.Element {
           </Routes>
         </BrowserRouter>
       </div>
-
-      {/*<Footer />*/}
     </section>
   );
 }
