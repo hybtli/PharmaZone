@@ -35,14 +35,14 @@ const Home = (): JSX.Element => {
           </div>
           <div className={styles.back}>
             <Typography style={{ marginLeft: "5%", marginRight: "5%" }}>
-              The "Check Medicine Content" section allows you to easily access
-              and verify information about different medicine contents. With a
-              simple click, you can explore and gain insights into the
+              The "Check Medicine Content" section allows you to access and
+              verify information about different medicine contents easily. With
+              a simple click, you can explore and gain insights into the
               composition and details of various medicines. This feature enables
               you to make informed decisions about your healthcare by providing
               easy access to comprehensive information about medicine contents
-              and their potential effects. Click on the button to check content
-              of medicines.
+              and their potential effects. Click on the button to check the
+              content of medicines.
             </Typography>
             <ShowButton to="/medicine-content" />
           </div>

@@ -25,7 +25,7 @@ const Collapse = (props: ContentType): JSX.Element => {
           }}
           onClick={toggleAccordion}
         >
-          <span>{props.content.medicine.name}</span>
+          <Typography variant="h6">{props.content.medicine.name}</Typography>
           <svg
             className={`w-5 h-5 transform ${isExpanded ? "rotate-180" : ""}`}
             xmlns="http://www.w3.org/2000/svg"
@@ -42,22 +42,47 @@ const Collapse = (props: ContentType): JSX.Element => {
         </button>
         {isExpanded && (
           <div className="rounded-b-lg p-4 bg-base-100 mb-5">
+            <Typography className="text-base-500" variant="h6">
+              Dosage Form:{" "}
+            </Typography>
             <Typography className="text-base-500">
-              Dosage Form: {props.content.medicine.dosage_form} <br />
-              Strength: {props.content.medicine.strength} <br />
-              Manufacturer: {props.content.medicine.manufacturer} <br />
+              » {props.content.medicine.dosage_form}
+            </Typography>
+            <Typography className="text-base-500" variant="h6">
+              Strength:{" "}
+            </Typography>
+            <Typography className="text-base-500">
+              » {props.content.medicine.strength}
+            </Typography>
+            <Typography className="text-base-500" variant="h6">
+              Manufacturer:{" "}
+            </Typography>
+            <Typography className="text-base-500">
+              » {props.content.medicine.manufacturer}
+            </Typography>
+            <Typography className="text-base-500" variant="h6">
               Ingredients:
               {props.content.medicine.ingredients.map((item) => (
-                <Typography>{`${item}\n`}</Typography>
+                <Typography>» {`${item}\n`}</Typography>
               ))}
-              <br />
-              Indications:{props.content.medicine.indications} <br />
+            </Typography>
+            <Typography className="text-base-500" variant="h6">
+              Indications:{" "}
+            </Typography>
+            <Typography className="text-base-500">
+              » {props.content.medicine.indications}
+            </Typography>
+            <Typography className="text-base-500" variant="h6">
               Warnings:
               {props.content.medicine.warnings.map((item) => (
-                <Typography>{`${item}\n`}</Typography>
+                <Typography>» {`${item}\n`}</Typography>
               ))}
-              <br />
-              Storage: {props.content.medicine.storage} <br />
+            </Typography>
+            <Typography className="text-base-500" variant="h6">
+              Storage:
+            </Typography>
+            <Typography className="text-base-500">
+              » {props.content.medicine.storage}
             </Typography>
           </div>
         )}

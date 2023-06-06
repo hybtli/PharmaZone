@@ -4,6 +4,7 @@ import { GetMedicineContent } from "../../api/MedicineContentController.types";
 import image from "../../images/image1.png";
 import Collapse from "./Collapse";
 import axios from "axios";
+import { useSnackbar } from "notistack";
 
 const MedicineContent = (): JSX.Element => {
   const [medicines, setMedicines] = useState<GetMedicineContent[]>([]);
@@ -11,6 +12,7 @@ const MedicineContent = (): JSX.Element => {
     GetMedicineContent[]
   >([]);
   const [loading, setLoading] = useState(false);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   useEffect(() => {
     (async () => {
@@ -21,12 +23,15 @@ const MedicineContent = (): JSX.Element => {
         )
         .then((response) => {
           setMedicines(response.data.data);
+        })
+        .catch((err) => {
+          enqueueSnackbar(err);
         });
       setLoading(false);
     })();
   }, []);
 
-  const handleSearch = (searchTerm: string) => {
+  const handleSearch = async (searchTerm: string) => {
     const filteredMedicines = medicines.filter((item) =>
       item.medicine.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
