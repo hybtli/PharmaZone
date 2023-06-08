@@ -3,8 +3,8 @@ import { Loading, SearchField } from "../../components";
 import { GetMedicineContent } from "../../api/MedicineContentController.types";
 import image from "../../images/image1.png";
 import Collapse from "./Collapse";
-import axios from "axios";
 import { useSnackbar } from "notistack";
+import API from "../../api";
 
 const MedicineContent = (): JSX.Element => {
   const [medicines, setMedicines] = useState<GetMedicineContent[]>([]);
@@ -12,24 +12,21 @@ const MedicineContent = (): JSX.Element => {
     GetMedicineContent[]
   >([]);
   const [loading, setLoading] = useState(false);
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     (async () => {
       setLoading(true);
-      await axios
-        .get(
-          "https://medicine-content-api.up.railway.app/api/medicines/content",
-        )
+      await API.getMedicines()
         .then((response) => {
-          setMedicines(response.data.data);
+          setMedicines(response);
         })
         .catch((err) => {
           enqueueSnackbar(err);
         });
       setLoading(false);
     })();
-  }, []);
+  }, [enqueueSnackbar]);
 
   const handleSearch = async (searchTerm: string) => {
     const filteredMedicines = medicines.filter((item) =>

@@ -7,7 +7,7 @@ type SearchFieldProps = {
 
 function SearchField({ onSearch }: SearchFieldProps) {
   const [searchTerm, setSearchTerm] = useState("");
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();

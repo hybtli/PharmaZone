@@ -7,7 +7,7 @@ const Navbar = () => {
     <div className="navbar bg-base-300">
       <div className="navbar-start"></div>
       <div className="navbar-center">
-        <a className="btn btn-ghost normal-case text-xl" href="/">
+        <a className="btn btn-ghost normal-case text-xl" href="/home">
           PharmaZone{" "}
           <FontAwesomeIcon
             icon={faLaptopMedical}
