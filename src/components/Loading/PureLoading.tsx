@@ -2,13 +2,19 @@ import React, { ReactNode } from "react";
 import clsx from "clsx";
 
 import { makeStyles } from "@material-ui/core/styles";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import { HeartSpinner } from "react-spinners-kit";
 
 const useStyles = makeStyles({
   container: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    alignItems: "center",
+  },
+  content: {
+    display: "flex",
+    alignItems: "center",
+    marginTop: "1em",
   },
   icon: {
     width: "9em",
@@ -16,11 +22,8 @@ const useStyles = makeStyles({
     color: "red",
   },
   message: {
-    textAlign: "center",
     color: "black",
     fontFamily: "Roboto, sans-serif",
-    opacity: 0.5,
-    margin: "0 1em",
   },
   fullscreen: {
     height: "100vh",
@@ -41,7 +44,7 @@ const PureLoading: React.FC<LoadingProps> = ({
   return (
     <div className={clsx(classes.container, fullscreen && classes.fullscreen)}>
       <div className={classes.message}>
-        <CircularProgress className={classes.icon} />
+        <HeartSpinner className={classes.icon} color="red" size={60} />
         {children}
       </div>
     </div>

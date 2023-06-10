@@ -9,13 +9,11 @@ interface LoadingProps {
 
 const Loading: React.FunctionComponent<LoadingProps> = ({
   fullscreen = false,
-  loadingPrimary = "Loading",
-  loadingSecondary = "Please wait...",
+  loadingPrimary = "Loading. . .",
 }: LoadingProps) => {
   return (
     <PureLoading fullscreen={fullscreen}>
-      <h1>Loading</h1>
-      <div>Please wait...</div>
+      <h1>{loadingPrimary}</h1>
     </PureLoading>
   );
 };
