@@ -39,6 +39,16 @@ const MedicineContent = (): JSX.Element => {
     const filteredMedicines = medicines.filter((item) =>
       item.medicine.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
+    if (filteredMedicines.length === 0) {
+      enqueueSnackbar("No Content", {
+        variant: "info",
+        autoHideDuration: 3000,
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "center",
+        },
+      });
+    }
     setSearchedMedicine(filteredMedicines);
   };
 
