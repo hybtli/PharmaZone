@@ -28,25 +28,18 @@ const DutyPharmacy = (): JSX.Element => {
   >([]);
 
   const [selected, setSelected] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   // When province&district is not selected then do not show the table
   const [state, setState] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      await API.getPharmacies(city, county).then((response) => {
-        setPharmacy(response);
-      });
-      setLoading(false);
-    })();
-  }, [city, county]);
 
   // Getting the provinces of Turkey
   useEffect(() => {
     (async () => {
+      setLoading(true);
       await API.getProvinces().then((response) => {
         setProvinces(response);
       });
+      setLoading(false);
     })();
   }, []);
 
@@ -56,6 +49,17 @@ const DutyPharmacy = (): JSX.Element => {
       setDistricts(response);
     });
   };
+
+  const handlePharmacies = async (district: string) => {
+    setLoading(true);
+    await API.getPharmacies(city, district).then((response) => {
+      setPharmacy(response);
+    });
+    setLoading(false);
+  };
+
+  console.log("city:\n", city);
+  console.log("district:\n", county);
 
   if (!loading) {
     return (
@@ -89,9 +93,9 @@ const DutyPharmacy = (): JSX.Element => {
             className="select select-primary w-full"
             disabled={!selected}
             onChange={(event) => {
-              setLoading(true);
               setCounty(event.target.value);
               setState(true);
+              return handlePharmacies(event.target.value);
             }}
             value={county}
           >
