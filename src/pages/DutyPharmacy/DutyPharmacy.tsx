@@ -5,6 +5,7 @@ import BasicTable from "./BasicTable";
 import { Loading } from "../../components";
 //import Loading from "./loading";
 import image from "../../images/image2.png";
+import { useSnackbar } from "notistack";
 
 const DutyPharmacy = (): JSX.Element => {
   const [pharmacy, setPharmacy] = useState<GetDutyPharmacyDetail[]>([]);
@@ -31,6 +32,7 @@ const DutyPharmacy = (): JSX.Element => {
   const [loading, setLoading] = useState(false);
   // When province&district is not selected then do not show the table
   const [state, setState] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   // Getting the provinces of Turkey
   useEffect(() => {
@@ -53,6 +55,16 @@ const DutyPharmacy = (): JSX.Element => {
   const handlePharmacies = async (district: string) => {
     setLoading(true);
     await API.getPharmacies(city, district).then((response) => {
+      if (response.length === 0) {
+        enqueueSnackbar("No Content", {
+          variant: "info",
+          autoHideDuration: 3000,
+          anchorOrigin: {
+            vertical: "bottom",
+            horizontal: "center",
+          },
+        });
+      }
       setPharmacy(response);
     });
     setLoading(false);
@@ -119,7 +131,11 @@ const DutyPharmacy = (): JSX.Element => {
               data={pharmacy}
             />
           ) : (
-            <p>No Content</p>
+            <img
+              className="mx-auto my-auto"
+              src={image}
+              alt="Search Pharmacy"
+            />
           )
         ) : (
           <img className="mx-auto my-auto" src={image} alt="Search Pharmacy" />

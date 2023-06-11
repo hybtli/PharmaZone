@@ -22,7 +22,14 @@ const MedicineContent = (): JSX.Element => {
           setMedicines(response);
         })
         .catch((err) => {
-          enqueueSnackbar(err);
+          enqueueSnackbar(err, {
+            variant: "error",
+            autoHideDuration: 3000,
+            anchorOrigin: {
+              vertical: "bottom",
+              horizontal: "center",
+            },
+          });
         });
       setLoading(false);
     })();
